@@ -1,7 +1,8 @@
+import { motion } from "framer-motion";
 import Link from "next/link";
 import styles from "../styles/Navbar.module.css";
 
-const Navbar = () => {
+const Navbar = ({ setSearchForm }) => {
   return (
     <div className={styles.navbar}>
       <div className={styles.left}>
@@ -9,25 +10,28 @@ const Navbar = () => {
           <a className={styles.logo}>SHOE .</a>
         </Link>
         <Link href="/">
-          <a>New</a>
+          <motion.a whileHover={{ scale: 1.3, cursor: "pointer" }}>
+            New
+          </motion.a>
         </Link>
         <Link href="/">
-          <a>Collection</a>
+          <motion.a whileHover={{ scale: 1.3, cursor: "pointer" }}>
+            Collection
+          </motion.a>
         </Link>
         <Link href="/">
-          <a>Archive</a>
+          <motion.a whileHover={{ scale: 1.3, cursor: "pointer" }}>
+            Archive
+          </motion.a>
         </Link>
         <Link href="/">
-          <a>Shoe care</a>
+          <motion.a whileHover={{ scale: 1.3, cursor: "pointer" }}>
+            Shoe care
+          </motion.a>
         </Link>
       </div>
       <div className={styles.right}>
-        <Link href="/">
-          <a>Search</a>
-        </Link>
-        <Link href="/">
-          <a>Help</a>
-        </Link>
+        <a onClick={() => setSearchForm(true)}>Search</a>
         <Link href="/">
           <a>My account</a>
         </Link>
