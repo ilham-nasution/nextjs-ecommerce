@@ -2,7 +2,13 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import styles from "../styles/Navbar.module.css";
 
-const Navbar = ({ setSearchForm, setSignInForm, signInForm }) => {
+const Navbar = ({
+  setSearchForm,
+  setSignInForm,
+  signInForm,
+  setOpenCart,
+  openCart,
+}) => {
   return (
     <div className={styles.navbar}>
       <div className={styles.left}>
@@ -32,21 +38,35 @@ const Navbar = ({ setSearchForm, setSignInForm, signInForm }) => {
       </div>
       <div className={styles.right}>
         <a
-          className={signInForm ? styles.unactive : ""}
+          className={signInForm || openCart ? styles.unactive : ""}
           onClick={() => {
             setSearchForm(true);
             setSignInForm(false);
+            setOpenCart(false);
           }}
         >
           Search
         </a>
         <a
-          className={signInForm ? styles.active : ""}
-          onClick={() => setSignInForm(true)}
+          className={
+            openCart ? styles.unactive : signInForm ? styles.active : ""
+          }
+          onClick={() => {
+            setSignInForm(true);
+            setOpenCart(false);
+          }}
         >
           My account
         </a>
-        <a className={styles.cart}>0</a>
+        <a
+          className={openCart ? styles.cartActive : styles.cart}
+          onClick={() => {
+            setOpenCart(true);
+            setSignInForm(false);
+          }}
+        >
+          0
+        </a>
       </div>
     </div>
   );

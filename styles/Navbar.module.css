@@ -34,6 +34,13 @@
   padding: 4px 8px;
 }
 
+.cartActive {
+  background-color: black;
+  color: whitesmoke;
+  border-radius: 100%;
+  padding: 4px 8px;
+}
+
 .unactive {
   color: rgb(201, 201, 201);
 }
