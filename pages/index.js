@@ -5,6 +5,7 @@ import Cart from "../components/Cart";
 import Navbar from "../components/Navbar";
 import SearchForm from "../components/SearchForm";
 import SignInForm from "../components/SignInForm";
+import Slider from "../components/Slider";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -31,6 +32,7 @@ export default function Home() {
         openCart={openCart}
         setOpenCart={setOpenCart}
       />
+      <Slider />
     </div>
   );
 }
