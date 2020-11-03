@@ -1,6 +1,7 @@
 import { AnimatePresence } from "framer-motion";
 import Head from "next/head";
 import { useState } from "react";
+import Blog from "../components/Blog";
 import Cart from "../components/Cart";
 import Navbar from "../components/Navbar";
 import SearchForm from "../components/SearchForm";
@@ -33,6 +34,7 @@ export default function Home() {
         setOpenCart={setOpenCart}
       />
       <Slider />
+      <Blog />
     </div>
   );
 }
