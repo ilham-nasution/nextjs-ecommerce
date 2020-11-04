@@ -1,5 +1,5 @@
 .modal {
-  position: absolute;
+  position: fixed;
   top: 0;
   background-color: rgba(0, 0, 0, 0.404);
   width: 100%;
@@ -12,8 +12,9 @@
   right: 32px;
   background-color: white;
   width: 30%;
-  padding: 64px 32px 24px 32px;
+  padding: 88px 32px 24px 32px;
   border-radius: 4px;
+  z-index: 3;
 }
 
 .footer {

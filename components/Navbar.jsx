@@ -15,9 +15,10 @@ const Navbar = ({
     [0, 0.4, 1],
     ["", "", "white"]
   );
+  const opacity = useTransform(scrollYProgress, [0, 0.4, 0.4], [1, 0, 1]);
 
   return (
-    <motion.div style={{ backgroundColor }} className={styles.navbar}>
+    <motion.div style={{ backgroundColor, opacity }} className={styles.navbar}>
       <div className={styles.left}>
         <Link href="/">
           <a className={styles.logo}>SHOE .</a>
