@@ -18,3 +18,7 @@
   font-weight: bold;
   margin: 8px 0px;
 }
+
+.card p {
+  font-size: small;
+}

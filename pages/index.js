@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useState } from "react";
 import Blog from "../components/Blog";
 import Cart from "../components/Cart";
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import SearchForm from "../components/SearchForm";
 import SignInForm from "../components/SignInForm";
@@ -35,6 +36,7 @@ export default function Home() {
       />
       <Slider />
       <Blog />
+      <Footer />
     </div>
   );
 }

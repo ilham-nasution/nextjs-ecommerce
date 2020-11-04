@@ -1,0 +1,39 @@
+.footer {
+  padding: 180px 40px 40px 40px;
+}
+
+.row {
+  display: flex;
+}
+
+.col {
+  max-width: 380px;
+  margin-right: 80px;
+}
+
+.colsm {
+  max-width: 150px;
+  margin-right: 80px;
+}
+
+.colsm p {
+  font-size: small;
+  margin: 0;
+  line-height: 20px;
+}
+
+.col h5 {
+  font-weight: bold;
+}
+
+.col p {
+  font-size: small;
+  margin: 0;
+  line-height: 20px;
+}
+
+.col a {
+  display: block;
+  font-size: small;
+  margin-bottom: 4px;
+}
