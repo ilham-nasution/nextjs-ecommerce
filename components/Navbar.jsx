@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useViewportScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import styles from "../styles/Navbar.module.css";
 
@@ -9,8 +9,15 @@ const Navbar = ({
   setOpenCart,
   openCart,
 }) => {
+  const { scrollYProgress } = useViewportScroll();
+  const backgroundColor = useTransform(
+    scrollYProgress,
+    [0, 0.4, 1],
+    ["", "", "white"]
+  );
+
   return (
-    <div className={styles.navbar}>
+    <motion.div style={{ backgroundColor }} className={styles.navbar}>
       <div className={styles.left}>
         <Link href="/">
           <a className={styles.logo}>SHOE .</a>
@@ -68,7 +75,7 @@ const Navbar = ({
           0
         </a>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
