@@ -1,6 +1,7 @@
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import styles from "../styles/Navbar.module.css";
+import cx from "classnames";
 
 const Navbar = ({
   setSearchForm,
@@ -8,6 +9,7 @@ const Navbar = ({
   signInForm,
   setOpenCart,
   openCart,
+  fixedTop,
 }) => {
   const { scrollYProgress } = useViewportScroll();
   const backgroundColor = useTransform(
@@ -18,12 +20,15 @@ const Navbar = ({
   const opacity = useTransform(scrollYProgress, [0, 0.4, 0.4], [1, 0, 1]);
 
   return (
-    <motion.div style={{ backgroundColor, opacity }} className={styles.navbar}>
+    <motion.div
+      style={{ backgroundColor, opacity }}
+      className={cx(styles.navbar, { [styles.fixedTop]: fixedTop })}
+    >
       <div className={styles.left}>
         <Link href="/">
           <a className={styles.logo}>SHOE .</a>
         </Link>
-        <Link href="/">
+        <Link href="/store/new">
           <motion.a whileHover={{ scale: 1.3, cursor: "pointer" }}>
             New
           </motion.a>

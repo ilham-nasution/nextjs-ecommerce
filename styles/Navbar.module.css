@@ -3,10 +3,13 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  position: fixed;
-  top: 0;
   padding: 40px;
   z-index: 3;
+}
+
+.fixedTop {
+  position: fixed;
+  top: 0;
 }
 
 .left {
