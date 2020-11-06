@@ -1,15 +1,20 @@
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import Link from "next/link";
-import styles from "../styles/Navbar.module.css";
-import cx from "classnames";
+import {
+  Navbar,
+  NavLink,
+  Cart,
+  NavRight,
+  NavLeft,
+  NavBrand,
+} from "../styles/Navbar";
 
-const Navbar = ({
+const Header = ({
   setSearchForm,
   setSignInForm,
   signInForm,
   setOpenCart,
   openCart,
-  fixedTop,
 }) => {
   const { scrollYProgress } = useViewportScroll();
   const backgroundColor = useTransform(
@@ -20,13 +25,10 @@ const Navbar = ({
   const opacity = useTransform(scrollYProgress, [0, 0.4, 0.4], [1, 0, 1]);
 
   return (
-    <motion.div
-      style={{ backgroundColor, opacity }}
-      className={cx(styles.navbar, { [styles.fixedTop]: fixedTop })}
-    >
-      <div className={styles.left}>
+    <Navbar fixedTop style={{ backgroundColor, opacity }}>
+      <NavLeft>
         <Link href="/">
-          <a className={styles.logo}>SHOE .</a>
+          <NavBrand>SHOE .</NavBrand>
         </Link>
         <Link href="/store/new">
           <motion.a whileHover={{ scale: 1.3, cursor: "pointer" }}>
@@ -48,10 +50,10 @@ const Navbar = ({
             Shoe care
           </motion.a>
         </Link>
-      </div>
-      <div className={styles.right}>
-        <a
-          className={signInForm || openCart ? styles.unactive : ""}
+      </NavLeft>
+      <NavRight>
+        <NavLink
+          unactive={signInForm || openCart}
           onClick={() => {
             setSearchForm(true);
             setSignInForm(false);
@@ -59,30 +61,29 @@ const Navbar = ({
           }}
         >
           Search
-        </a>
-        <a
-          className={
-            openCart ? styles.unactive : signInForm ? styles.active : ""
-          }
+        </NavLink>
+        <NavLink
+          active={signInForm}
+          unactive={openCart}
           onClick={() => {
             setSignInForm(true);
             setOpenCart(false);
           }}
         >
           My account
-        </a>
-        <a
-          className={openCart ? styles.cartActive : styles.cart}
+        </NavLink>
+        <Cart
+          active={openCart}
           onClick={() => {
             setOpenCart(true);
             setSignInForm(false);
           }}
         >
           0
-        </a>
-      </div>
-    </motion.div>
+        </Cart>
+      </NavRight>
+    </Navbar>
   );
 };
 
-export default Navbar;
+export default Header;

@@ -6,6 +6,8 @@ import Cart from "../../components/Cart";
 import SearchForm from "../../components/SearchForm";
 import SignInForm from "../../components/SignInForm";
 import styles from "../../styles/New.module.css";
+import Footer from "../../components/Footer";
+import Link from "next/link";
 
 const shoeList = [
   { image: "/product1.jpg", title: "LT 01 Premium", price: 222.31 },
@@ -50,14 +52,17 @@ export default function New() {
         </div>
         <div className={styles.grid}>
           {shoeList.map((shoe) => (
-            <div key={shoe.image} className={styles.card}>
-              <img src={shoe.image} alt="shoe" />
-              <p>{shoe.title}</p>
-              <p>$ {shoe.price}</p>
-            </div>
+            <Link href={`/store/product/${shoe.title.replaceAll(" ", "-")}`}>
+              <a key={shoe.image} className={styles.card}>
+                <img src={shoe.image} alt="shoe" />
+                <p>{shoe.title}</p>
+                <p>$ {shoe.price}</p>
+              </a>
+            </Link>
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
