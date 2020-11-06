@@ -1,5 +1,5 @@
-import styles from "../styles/Slider.module.css";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { SwiperSlide } from "swiper/react";
+import { Card, Container } from "../styles/SliderStyle";
 
 const imgSlider = [
   {
@@ -36,22 +36,17 @@ const imgSlider = [
 
 const Slider = () => {
   return (
-    <Swiper
-      className={styles.container}
-      grabCursor={true}
-      spaceBetween={88}
-      slidesPerView={3}
-    >
+    <Container grabCursor={true} spaceBetween={88} slidesPerView={3}>
       {imgSlider.map((item) => (
         <SwiperSlide key={item.image}>
-          <div className={styles.card}>
+          <Card>
             <img src={item.image} alt="slider" />
             <p>{item.title}</p>
             <p>{item.caption}</p>
-          </div>
+          </Card>
         </SwiperSlide>
       ))}
-    </Swiper>
+    </Container>
   );
 };
 

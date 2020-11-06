@@ -7,7 +7,7 @@ import {
   NavRight,
   NavLeft,
   NavBrand,
-} from "../styles/Navbar";
+} from "../styles/NavbarStyle";
 
 const Header = ({
   setSearchForm,

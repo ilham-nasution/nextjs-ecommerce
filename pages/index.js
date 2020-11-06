@@ -28,7 +28,6 @@ export default function Home() {
         {openCart && <Cart setOpenCart={setOpenCart} />}
       </AnimatePresence>
       <Navbar
-        fixedTop
         setSearchForm={setSearchForm}
         signInForm={signInForm}
         setSignInForm={setSignInForm}
