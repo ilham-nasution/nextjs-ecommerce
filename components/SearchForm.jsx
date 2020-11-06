@@ -1,33 +1,33 @@
-import { motion } from "framer-motion";
-import styles from "../styles/SearchForm.module.css";
+import {
+  NavModal,
+  NavSearch,
+  NavSearchHeader,
+  NavSearchInput,
+} from "../styles/NavbarStyle";
 
 const SearchForm = ({ setSearchForm }) => {
   return (
     <>
-      <div onClick={() => setSearchForm(false)} className={styles.modal} />
-      <motion.div
+      <NavModal onClick={() => setSearchForm(false)} />
+      <NavSearch
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ ease: "easeOut", duration: 0.5 }}
+        transition={{ ease: "easeOut", duration: 0.6 }}
         exit={{ opacity: 0 }}
-        className={styles.search}
       >
-        <div className="row">
-          <p className={styles.logo}>Shoe .</p>
-          <button className={styles.btn} onClick={() => setSearchForm(false)}>
-            x
-          </button>
-        </div>
-        <motion.input
+        <NavSearchHeader>
+          <p>Shoe .</p>
+          <button onClick={() => setSearchForm(false)}>x</button>
+        </NavSearchHeader>
+        <NavSearchInput
           autoFocus
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 1 }}
           transition={{ ease: "easeOut", duration: 1 }}
-          className={styles.form}
           type="text"
           placeholder="Start typing what you're looking for"
         />
-      </motion.div>
+      </NavSearch>
     </>
   );
 };

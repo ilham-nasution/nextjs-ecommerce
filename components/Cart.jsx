@@ -1,26 +1,28 @@
-import { motion } from "framer-motion";
 import Link from "next/link";
-import styles from "../styles/Cart.module.css";
+import {
+  NavModal,
+  NavModalContainer,
+  NavModalFooter,
+} from "../styles/NavbarStyle";
 
 const Cart = ({ setOpenCart }) => {
   return (
     <>
-      <div onClick={() => setOpenCart(false)} className={styles.modal} />
-      <motion.div
+      <NavModal onClick={() => setOpenCart(false)} />
+      <NavModalContainer
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ ease: "easeOut", duration: 0.5 }}
+        transition={{ ease: "easeOut", duration: 0.6 }}
         exit={{ opacity: 0 }}
-        className={styles.container}
       >
         <h5>Your bag is currently empty</h5>
-        <div className={styles.footer}>
+        <NavModalFooter>
           <Link href="/">
             <a>View bag</a>
           </Link>
           <button>Checkout</button>
-        </div>
-      </motion.div>
+        </NavModalFooter>
+      </NavModalContainer>
     </>
   );
 };

@@ -19,10 +19,10 @@ const Header = ({
   const { scrollYProgress } = useViewportScroll();
   const backgroundColor = useTransform(
     scrollYProgress,
-    [0, 0.4, 1],
+    [0, 0.5, 1],
     ["", "", "white"]
   );
-  const opacity = useTransform(scrollYProgress, [0, 0.4, 0.4], [1, 0, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.4, 0.5], [1, 0, 1]);
 
   return (
     <Navbar fixedTop style={{ backgroundColor, opacity }}>

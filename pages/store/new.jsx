@@ -35,7 +35,6 @@ export default function New() {
         {openCart && <Cart setOpenCart={setOpenCart} />}
       </AnimatePresence>
       <Navbar
-        fixedTop
         setSearchForm={setSearchForm}
         signInForm={signInForm}
         setSignInForm={setSignInForm}

@@ -1,33 +1,36 @@
-import { motion } from "framer-motion";
 import Link from "next/link";
-import styles from "../styles/SignInForm.module.css";
+import {
+  NavModal,
+  NavModalContainer,
+  NavModalFooter,
+} from "../styles/NavbarStyle";
+import { FormInput } from "../styles/FormStyle";
 
 const SignInForm = ({ setSignInForm }) => {
   return (
     <>
-      <div onClick={() => setSignInForm(false)} className={styles.modal} />
-      <motion.form
+      <NavModal onClick={() => setSignInForm(false)} />
+      <NavModalContainer
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ ease: "easeOut", duration: 0.5 }}
+        transition={{ ease: "easeOut", duration: 0.6 }}
         exit={{ opacity: 0 }}
-        className={styles.form}
       >
-        <div className={styles.input}>
+        <FormInput>
           <label htmlFor="email">Email address</label>
           <input type="text" />
-        </div>
-        <div className={styles.input}>
+        </FormInput>
+        <FormInput>
           <label htmlFor="password">Password</label>
           <input type="text" />
-        </div>
-        <div className={styles.footer}>
+        </FormInput>
+        <NavModalFooter>
           <Link href="/">
             <a>I forgot my password</a>
           </Link>
           <button>Sign in</button>
-        </div>
-      </motion.form>
+        </NavModalFooter>
+      </NavModalContainer>
     </>
   );
 };
