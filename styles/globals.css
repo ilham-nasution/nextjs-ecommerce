@@ -17,7 +17,6 @@ a {
   scroll-behavior: smooth;
 }
 
-.row {
-  display: flex;
-  justify-content: space-between;
+button {
+  cursor: pointer;
 }

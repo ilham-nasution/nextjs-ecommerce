@@ -1,10 +1,4 @@
-import { AnimatePresence } from "framer-motion";
 import Head from "next/head";
-import { useState } from "react";
-import Navbar from "../../components/Navbar";
-import Cart from "../../components/Cart";
-import SearchForm from "../../components/SearchForm";
-import SignInForm from "../../components/SignInForm";
 import styles from "../../styles/New.module.css";
 import Footer from "../../components/Footer";
 import Link from "next/link";
@@ -19,28 +13,13 @@ const shoeList = [
 ];
 
 export default function New() {
-  const [searchForm, setSearchForm] = useState(false);
-  const [signInForm, setSignInForm] = useState(false);
-  const [openCart, setOpenCart] = useState(false);
-
   return (
     <div>
       <Head>
         <title>New Product | Shoe Store</title>
         <link rel="icon" href="/shoe.ico" />
       </Head>
-      <AnimatePresence exitBeforeEnter>
-        {searchForm && <SearchForm setSearchForm={setSearchForm} />}
-        {signInForm && <SignInForm setSignInForm={setSignInForm} />}
-        {openCart && <Cart setOpenCart={setOpenCart} />}
-      </AnimatePresence>
-      <Navbar
-        setSearchForm={setSearchForm}
-        signInForm={signInForm}
-        setSignInForm={setSignInForm}
-        openCart={openCart}
-        setOpenCart={setOpenCart}
-      />
+
       <div className={styles.container}>
         <div className={styles.header}>
           <h1>

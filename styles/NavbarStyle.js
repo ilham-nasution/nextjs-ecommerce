@@ -59,7 +59,7 @@ export const NavModalContainer = styled(motion.div)`
   right: 32px;
   background-color: white;
   width: 30%;
-  padding: 88px 32px 24px 32px;
+  padding: 72px 32px 24px 32px;
   border-radius: 4px;
   z-index: 3;
 `;
@@ -116,7 +116,6 @@ export const NavSearchHeader = styled.div`
     font-size: 24px;
     padding: 0;
     outline: none;
-    cursor: pointer;
   }
 `;
 
