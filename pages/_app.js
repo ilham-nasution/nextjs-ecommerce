@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import "swiper/swiper.scss";
+import "swiper/components/navigation/navigation.scss";
 import { AnimatePresence } from "framer-motion";
 import Navbar from "../components/Navbar";
 import SearchForm from "../components/SearchForm";

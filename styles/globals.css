@@ -20,3 +20,11 @@ a {
 button {
   cursor: pointer;
 }
+
+.swiper-button-next {
+  color: black !important;
+}
+
+.swiper-button-prev {
+  color: black !important;
+}

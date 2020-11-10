@@ -3,16 +3,7 @@ import styles from "../../styles/New.module.css";
 import Footer from "../../components/Footer";
 import Link from "next/link";
 
-const shoeList = [
-  { image: "/product1.jpg", title: "LT 01 Premium", price: 222.31 },
-  { image: "/product2.jpg", title: "LT 02 Premium", price: 205.79 },
-  { image: "/product3.jpg", title: "LT 03 Premium", price: 214.05 },
-  { image: "/product4.jpg", title: "LT 04 Premium", price: 189.26 },
-  { image: "/product5.jpg", title: "LT 05 Premium", price: 197.52 },
-  { image: "/product6.jpg", title: "LT 06 Premium", price: 222.31 },
-];
-
-export default function New() {
+export default function New({ products }) {
   return (
     <div>
       <Head>
@@ -23,18 +14,22 @@ export default function New() {
       <div className={styles.container}>
         <div className={styles.header}>
           <h1>
-            Explore our new collection, featuring styles from ocean waste, wood
-            fibres, VEGEA® vegan leather, chrome-free leather, and more.
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt
+            dolore laudantium molestiae eius. Nemo magni, beatae in neque
+            dignissimos.
           </h1>
           <button>Filter</button>
         </div>
         <div className={styles.grid}>
-          {shoeList.map((shoe) => (
-            <Link href={`/store/product/${shoe.title.replaceAll(" ", "-")}`}>
-              <a key={shoe.image} className={styles.card}>
-                <img src={shoe.image} alt="shoe" />
-                <p>{shoe.title}</p>
-                <p>$ {shoe.price}</p>
+          {products.map((shoe) => (
+            <Link key={shoe.id} href={`/store/product/${shoe.id}`}>
+              <a className={styles.card}>
+                <img
+                  src={`http://localhost:1337${shoe.image[0].formats.small.url}`}
+                  alt="shoe"
+                />
+                <p>{shoe.name}</p>
+                <p>Rp {shoe.price}</p>
               </a>
             </Link>
           ))}
@@ -43,4 +38,16 @@ export default function New() {
       <Footer />
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const res = await fetch("http://localhost:1337/products");
+  const products = await res.json();
+
+  return {
+    props: {
+      products,
+    },
+    revalidate: 300,
+  };
 }

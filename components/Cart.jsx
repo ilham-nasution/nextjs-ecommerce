@@ -4,6 +4,7 @@ import {
   NavModalContainer,
   NavModalFooter,
 } from "../styles/NavbarStyle";
+import Button from "./Button";
 
 const Cart = ({ setOpenCart }) => {
   return (
@@ -20,7 +21,7 @@ const Cart = ({ setOpenCart }) => {
           <Link href="/">
             <a>View bag</a>
           </Link>
-          <button>Checkout</button>
+          <Button>Checkout</Button>
         </NavModalFooter>
       </NavModalContainer>
     </>
