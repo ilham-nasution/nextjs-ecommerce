@@ -40,7 +40,7 @@ const Header = ({
             New
           </motion.a>
         </Link>
-        <Link href="/">
+        <Link href="/store/product">
           <motion.a whileHover={{ scale: 1.3, cursor: "pointer" }}>
             Collection
           </motion.a>

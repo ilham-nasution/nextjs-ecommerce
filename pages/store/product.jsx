@@ -2,6 +2,19 @@ import Head from "next/head";
 import styles from "../../styles/New.module.css";
 import Footer from "../../components/Footer";
 import Link from "next/link";
+import styled from "styled-components";
+
+const Alert = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  h1 {
+    text-align: center;
+  }
+  a {
+    color: blue;
+  }
+`;
 
 export default function Product({ products }) {
   return (
@@ -13,8 +26,20 @@ export default function Product({ products }) {
 
       <div className={styles.container}>
         <div className={styles.header}>
-          <h1>All Product</h1>
-          <button>Filter</button>
+          {products.length > 0 ? (
+            ""
+          ) : (
+            <Alert>
+              <h1>
+                Sorry the product you're searching for isn't available, browse
+                our collection{" "}
+                <Link href="/store/product">
+                  <a>here</a>
+                </Link>
+                !
+              </h1>
+            </Alert>
+          )}
         </div>
         <div className={styles.grid}>
           {products.map((shoe) => (
