@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
 import {
   NavModal,
   NavSearch,
@@ -6,6 +8,14 @@ import {
 } from "../styles/NavbarStyle";
 
 const SearchForm = ({ setSearchForm }) => {
+  const router = useRouter();
+  const [query, setQuery] = useState("");
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearchForm(false);
+    router.push(`/store/product?search=${query}`);
+  };
+
   return (
     <>
       <NavModal onClick={() => setSearchForm(false)} />
@@ -19,14 +29,18 @@ const SearchForm = ({ setSearchForm }) => {
           <p>Shoe .</p>
           <button onClick={() => setSearchForm(false)}>x</button>
         </NavSearchHeader>
-        <NavSearchInput
-          autoFocus
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 1 }}
-          transition={{ ease: "easeOut", duration: 1 }}
-          type="text"
-          placeholder="Start typing what you're looking for"
-        />
+        <form onSubmit={handleSearch}>
+          <NavSearchInput
+            onChange={(e) => setQuery(e.target.value)}
+            autoFocus
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 1 }}
+            transition={{ ease: "easeOut", duration: 1 }}
+            value={query}
+            type="text"
+            placeholder="Start typing what you're looking for"
+          />
+        </form>
       </NavSearch>
     </>
   );
