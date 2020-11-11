@@ -10,8 +10,12 @@ const StyledButton = styled.button`
   font-size: small;
 `;
 
-const Button = ({ children, handleClick }) => {
-  return <StyledButton onClick={handleClick}>{children}</StyledButton>;
+const Button = ({ children, handleClick, ...restProps }) => {
+  return (
+    <StyledButton {...restProps} onClick={handleClick}>
+      {children}
+    </StyledButton>
+  );
 };
 
 export default Button;

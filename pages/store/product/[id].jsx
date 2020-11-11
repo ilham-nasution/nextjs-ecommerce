@@ -2,6 +2,8 @@ import Head from "next/head";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation } from "swiper";
+import { useContext, useState } from "react";
+import { CartContext } from "../../../components/CartContext";
 
 const Container = styled.div`
   display: flex;
@@ -16,7 +18,10 @@ const ProductDetail = styled.div`
     line-height: 24px;
   }
   form {
-    margin-top: 80px;
+    margin-top: 56px;
+    label {
+      font-size: small;
+    }
   }
 `;
 
@@ -43,6 +48,26 @@ const Button = styled.button`
 SwiperCore.use(Navigation);
 
 export default function Product({ product }) {
+  const [values, setValues] = useState({
+    color: product.colors[0].name,
+    size: product.sizes[0].name,
+  });
+  const [cartItems, setCartItems] = useContext(CartContext);
+
+  const handleChange = (e) => {
+    setValues((prevValues) => {
+      return { ...prevValues, [e.target.name]: e.target.value };
+    });
+  };
+
+  const handleAddItem = (e) => {
+    e.preventDefault();
+    const item = { ...product, color: values.color, size: values.size };
+    setCartItems((prevItem) => {
+      return [...prevItem, item];
+    });
+  };
+
   return (
     <div>
       <Head>
@@ -65,28 +90,28 @@ export default function Product({ product }) {
           <h1>{product.name}</h1>
           <p>Rp {product.price}</p>
           <p>{product.description}</p>
-          <form>
-            <Select>
-              <option value="" disabled selected>
-                Color
-              </option>
-              {product.colors.map((color) => (
-                <option key={color.id} value={color.name}>
-                  {color.name}
-                </option>
-              ))}
-            </Select>
-            <Select>
-              <option value="" disabled selected>
-                Size
-              </option>
-              {product.sizes.map((size) => (
-                <option key={size.id} value={size.name}>
-                  {size.name}
-                </option>
-              ))}
-            </Select>
-            <Button>Add to bag</Button>
+          <form onSubmit={handleAddItem}>
+            <label>
+              Color:
+              <Select value={values.color} name="color" onChange={handleChange}>
+                {product.colors.map((color) => (
+                  <option key={color.id} value={color.name}>
+                    {color.name}
+                  </option>
+                ))}
+              </Select>
+            </label>
+            <label>
+              Size:
+              <Select value={values.size} name="size" onChange={handleChange}>
+                {product.sizes.map((size) => (
+                  <option key={size.id} value={size.name}>
+                    {size.name}
+                  </option>
+                ))}
+              </Select>
+            </label>
+            <Button type="submit">Add to bag</Button>
           </form>
         </ProductDetail>
       </Container>

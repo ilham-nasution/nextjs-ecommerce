@@ -1,5 +1,6 @@
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import Link from "next/link";
+import { useContext } from "react";
 import {
   Navbar,
   NavLink,
@@ -8,6 +9,7 @@ import {
   NavLeft,
   NavBrand,
 } from "../styles/NavbarStyle";
+import { CartContext } from "./CartContext";
 
 const Header = ({
   setSearchForm,
@@ -16,6 +18,9 @@ const Header = ({
   setOpenCart,
   openCart,
 }) => {
+  const [cartItems, setCartItems] = useContext(CartContext);
+  console.log(cartItems);
+
   const { scrollYProgress } = useViewportScroll();
   const backgroundColor = useTransform(
     scrollYProgress,
@@ -73,13 +78,15 @@ const Header = ({
           My account
         </NavLink>
         <Cart
+          cartItems={cartItems}
+          setCartItems={setCartItems}
           active={openCart}
           onClick={() => {
             setOpenCart(true);
             setSignInForm(false);
           }}
         >
-          0
+          {cartItems.length}
         </Cart>
       </NavRight>
     </Navbar>
