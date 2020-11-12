@@ -18,9 +18,7 @@ const Header = ({
   setOpenCart,
   openCart,
 }) => {
-  const [cartItems, setCartItems] = useContext(CartContext);
-  console.log(cartItems);
-
+  const { cartItems, setCartItems } = useContext(CartContext);
   const { scrollYProgress } = useViewportScroll();
   const backgroundColor = useTransform(
     scrollYProgress,

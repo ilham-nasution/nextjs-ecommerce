@@ -52,7 +52,7 @@ export default function Product({ product }) {
     color: product.colors[0].name,
     size: product.sizes[0].name,
   });
-  const [cartItems, setCartItems] = useContext(CartContext);
+  const { setCartItems } = useContext(CartContext);
 
   const handleChange = (e) => {
     setValues((prevValues) => {
