@@ -89,7 +89,7 @@ const Cart = ({ setOpenCart }) => {
         )}
 
         <NavModalFooter>
-          <Link href="/">
+          <Link href="/cart">
             <a>View bag</a>
           </Link>
           <Button>Checkout</Button>
