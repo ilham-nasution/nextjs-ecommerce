@@ -1,6 +1,6 @@
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import Link from "next/link";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import {
   Navbar,
   NavLink,
@@ -19,6 +19,11 @@ const Header = ({
   openCart,
 }) => {
   const { cartItems, setCartItems } = useContext(CartContext);
+  useEffect(() => {
+    const items = localStorage.getItem("cart");
+    setCartItems(JSON.parse(items));
+  }, []);
+
   const { scrollYProgress } = useViewportScroll();
   const backgroundColor = useTransform(
     scrollYProgress,

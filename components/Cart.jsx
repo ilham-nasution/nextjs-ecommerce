@@ -79,12 +79,15 @@ const Cart = ({ setOpenCart }) => {
         {cartItems.length === 0 ? (
           <h5>Your bag is currently empty</h5>
         ) : (
-          renderCartList
+          <>
+            {renderCartList}
+            <Subtotal>
+              <p>Subtotal: </p>
+              <p>Rp {subtotal}</p>
+            </Subtotal>
+          </>
         )}
-        <Subtotal>
-          <p>Subtotal: </p>
-          <p>Rp {subtotal}</p>
-        </Subtotal>
+
         <NavModalFooter>
           <Link href="/">
             <a>View bag</a>
