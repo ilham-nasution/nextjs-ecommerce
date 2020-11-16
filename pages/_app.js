@@ -3,11 +3,11 @@ import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";
 import { AnimatePresence } from "framer-motion";
 import Navbar from "../components/Navbar";
-import SearchForm from "../components/SearchForm";
-import SignInForm from "../components/SignInForm";
-import Cart from "../components/Cart";
+import SearchModal from "../components/SearchModal";
+import AuthModal from "../components/AuthModal";
+import CartModal from "../components/CartModal";
 import { useState } from "react";
-import { CartProvider } from "../components/CartContext";
+import { CartProvider } from "../contexts/CartContext";
 
 function MyApp({ Component, pageProps }) {
   const [searchForm, setSearchForm] = useState(false);
@@ -17,9 +17,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <CartProvider>
       <AnimatePresence exitBeforeEnter>
-        {searchForm && <SearchForm setSearchForm={setSearchForm} />}
-        {signInForm && <SignInForm setSignInForm={setSignInForm} />}
-        {openCart && <Cart setOpenCart={setOpenCart} />}
+        {searchForm && <SearchModal setSearchForm={setSearchForm} />}
+        {signInForm && <AuthModal setSignInForm={setSignInForm} />}
+        {openCart && <CartModal setOpenCart={setOpenCart} />}
       </AnimatePresence>
       <Navbar
         setSearchForm={setSearchForm}

@@ -1,21 +1,7 @@
-import styled from "styled-components";
+import { StyledButton } from "./ButtonStyle";
 
-const StyledButton = styled.button`
-  background-color: black;
-  padding: 16px 40px;
-  border-radius: 4px;
-  color: whitesmoke;
-  border: none;
-  outline: none;
-  font-size: small;
-`;
-
-const Button = ({ children, handleClick, ...restProps }) => {
-  return (
-    <StyledButton {...restProps} onClick={handleClick}>
-      {children}
-    </StyledButton>
-  );
+const Button = ({ children, ...restProps }) => {
+  return <StyledButton {...restProps}>{children}</StyledButton>;
 };
 
 export default Button;
