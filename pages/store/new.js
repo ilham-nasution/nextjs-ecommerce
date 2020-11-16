@@ -2,15 +2,35 @@ import Head from "next/head";
 import { Container, Header, Grid } from "../../styles/ItemListLayout";
 import Footer from "../../components/Footer";
 import ProductCard from "../../components/ProductCard";
+import { useState } from "react";
+import FilterModal from "../../components/FilterModal";
+import { AnimatePresence } from "framer-motion";
 
-export default function New({ products }) {
+export default function New({ products, colors, sizes }) {
+  const [openFilter, setOpenFilter] = useState(false);
+  const [shoes, setShoes] = useState(products);
+
+  const handleFilter = (param) => {
+    setOpenFilter(false);
+    setShoes(param.products);
+  };
+
   return (
     <div>
       <Head>
         <title>New Product | Shoe Store</title>
         <link rel="icon" href="/shoe.ico" />
       </Head>
-
+      <AnimatePresence>
+        {openFilter && (
+          <FilterModal
+            colors={colors}
+            sizes={sizes}
+            setOpenFilter={setOpenFilter}
+            handleFilter={handleFilter}
+          />
+        )}
+      </AnimatePresence>
       <Container>
         <Header>
           <h1>
@@ -18,10 +38,10 @@ export default function New({ products }) {
             dolore laudantium molestiae eius. Nemo magni, beatae in neque
             dignissimos.
           </h1>
-          <button>Filter</button>
+          <button onClick={() => setOpenFilter(true)}>Filter</button>
         </Header>
         <Grid>
-          {products.map((shoe) => (
+          {shoes.map((shoe) => (
             <ProductCard key={shoe.id} shoe={shoe} />
           ))}
         </Grid>
@@ -32,12 +52,18 @@ export default function New({ products }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch("http://localhost:1337/products");
-  const products = await res.json();
+  const productRes = await fetch("http://localhost:1337/products");
+  const colorRes = await fetch("http://localhost:1337/colors");
+  const sizesRes = await fetch("http://localhost:1337/sizes");
+  const sizes = await sizesRes.json();
+  const colors = await colorRes.json();
+  const products = await productRes.json();
 
   return {
     props: {
       products,
+      colors,
+      sizes,
     },
     revalidate: 300,
   };
