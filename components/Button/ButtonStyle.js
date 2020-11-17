@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StyledButton = styled.button`
   background-color: black;
@@ -8,4 +8,9 @@ export const StyledButton = styled.button`
   border: none;
   outline: none;
   font-size: small;
+  ${(props) =>
+    props.fullWidth &&
+    css`
+      width: 100%;
+    `}
 `;
