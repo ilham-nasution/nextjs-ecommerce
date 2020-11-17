@@ -46,7 +46,7 @@ const SignInForm = ({ setSignInForm }) => {
             </Link>
           ) : (
             <Link href="/create-account">
-              <a>Create an account</a>
+              <a onClick={() => setSignInForm(false)}>Create an account</a>
             </Link>
           )}
           <Button onClick={() => setShowForm(true)}>Log in</Button>
