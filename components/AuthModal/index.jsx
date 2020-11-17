@@ -5,7 +5,7 @@ import {
   NavModalContainer,
   NavModalFooter,
 } from "../../styles/NavModalStyle";
-import { FormInput } from "./FormStyle";
+import FormInput from "../FormInput";
 import Button from "../Button";
 
 const SignInForm = ({ setSignInForm }) => {
@@ -22,19 +22,13 @@ const SignInForm = ({ setSignInForm }) => {
       >
         {showForm ? (
           <>
-            <FormInput>
-              <label htmlFor="email">Email address</label>
-              <input type="text" />
-            </FormInput>
-            <FormInput>
-              <label htmlFor="password">Password</label>
-              <input type="text" />
-            </FormInput>
+            <FormInput label="Email" />
+            <FormInput label="Password" type="password" />
           </>
         ) : (
           <p
             style={{
-              marginBottom: "72px",
+              margin: "0 0 72px 0",
               fontSize: "smaller",
               lineHeight: "24px",
               width: "272px",
