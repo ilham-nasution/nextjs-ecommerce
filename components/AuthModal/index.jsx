@@ -7,25 +7,71 @@ import {
 } from "../../styles/NavModalStyle";
 import FormInput from "../FormInput";
 import Button from "../Button";
+import { useForm } from "react-hook-form";
+import axios from "axios";
 
 const SignInForm = ({ setSignInForm }) => {
   const [showForm, setShowForm] = useState(false);
+  const { register, handleSubmit, errors } = useForm();
+
+  const onSubmit = (data, e) => {
+    console.log(data);
+    axios
+      .post("http://localhost:1337/auth/local", {
+        identifier: data.email,
+        password: data.password,
+      })
+      .then((res) => {
+        console.log(res);
+        setSignInForm(false);
+      })
+      .catch((err) => {
+        e.target.reset();
+        alert(err.response.data.message[0].messages[0].message);
+      });
+  };
 
   return (
     <>
       <NavModal onClick={() => setSignInForm(false)} />
-      <NavModalContainer
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ ease: "easeOut", duration: 0.6 }}
-        exit={{ opacity: 0 }}
-      >
-        {showForm ? (
-          <>
-            <FormInput label="Email" />
-            <FormInput label="Password" type="password" />
-          </>
-        ) : (
+      {showForm ? (
+        <NavModalContainer
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ ease: "easeOut", duration: 0.6 }}
+          exit={{ opacity: 0 }}
+        >
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <FormInput
+              label="Email"
+              name="email"
+              r={register}
+              error={errors.email && "This is required"}
+            />
+            <FormInput
+              label="Password"
+              type="password"
+              name="password"
+              r={register}
+              error={errors.password && "This is required"}
+            />
+
+            <NavModalFooter>
+              <Link href="/">
+                <a>I forgot my password</a>
+              </Link>
+
+              <Button type="submit">Sign in</Button>
+            </NavModalFooter>
+          </form>
+        </NavModalContainer>
+      ) : (
+        <NavModalContainer
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ ease: "easeOut", duration: 0.6 }}
+          exit={{ opacity: 0 }}
+        >
           <p
             style={{
               margin: "0 0 72px 0",
@@ -37,21 +83,15 @@ const SignInForm = ({ setSignInForm }) => {
             Create an account or log in to view your orders, return or adjust
             your personal information
           </p>
-        )}
-
-        <NavModalFooter>
-          {showForm ? (
-            <Link href="/">
-              <a>I forgot my password</a>
-            </Link>
-          ) : (
+          <NavModalFooter>
             <Link href="/create-account">
               <a onClick={() => setSignInForm(false)}>Create an account</a>
             </Link>
-          )}
-          <Button onClick={() => setShowForm(true)}>Log in</Button>
-        </NavModalFooter>
-      </NavModalContainer>
+
+            <Button onClick={() => setShowForm(true)}>Log in</Button>
+          </NavModalFooter>
+        </NavModalContainer>
+      )}
     </>
   );
 };
