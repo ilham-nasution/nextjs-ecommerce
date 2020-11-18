@@ -12,4 +12,10 @@ export const FormInput = styled.div`
     padding: 10px;
     border: 1px solid rgb(221, 221, 221);
   }
+
+  p {
+    font-size: smaller;
+    color: red;
+    margin: 4px 0 0 0;
+  }
 `;

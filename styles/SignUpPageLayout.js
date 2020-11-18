@@ -33,6 +33,11 @@ export const GroupRadioButtons = styled.div`
     font-size: smaller;
   }
 
+  p:last-child {
+    margin: 8px 0 0 0;
+    color: red;
+  }
+
   div {
     display: flex;
   }
