@@ -11,12 +11,30 @@ import {
   FormContainer,
   GroupRadioButtons,
 } from "../styles/SignUpPageLayout";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 const createAccount = () => {
+  const router = useRouter();
   const { register, handleSubmit, errors, watch } = useForm();
   const passwordValue = watch("password", "");
-  const onSubmit = async (data) => {
-    console.log(data);
+
+  const onSubmit = (data, e) => {
+    axios
+      .post("http://localhost:1337/auth/local/register", {
+        username: `${data.firstName} ${data.lastName}`,
+        password: data.password,
+        email: data.email,
+        gender: data.gender,
+      })
+      .then((res) => {
+        console.log(res);
+        router.push(`/`);
+      })
+      .catch((err) => {
+        e.target.reset();
+        alert(err.response.data.message[0].messages[0].message);
+      });
   };
 
   return (
