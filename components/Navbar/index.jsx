@@ -1,4 +1,9 @@
-import { motion, useViewportScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useViewportScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import {
@@ -102,9 +107,9 @@ const Header = ({
             {cartItems.length}
           </NavCart>
         </NavRight>
-        <BurgerMenu setSideMenu={setSideMenu} />
+        <BurgerMenu sideMenu={sideMenu} setSideMenu={setSideMenu} />
       </Navbar>
-      {sideMenu && <MenuModal setSideMenu={setSideMenu} />}
+      <AnimatePresence>{sideMenu && <MenuModal />}</AnimatePresence>
     </>
   );
 };
