@@ -12,7 +12,7 @@ export const NavModal = styled.div`
 export const NavModalContainer = styled(motion.div)`
   position: fixed;
   top: 24px;
-  right: 32px;
+  right: 16px;
   background-color: white;
   width: 30%;
   padding: 72px 32px 24px 32px;

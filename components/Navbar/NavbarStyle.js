@@ -20,16 +20,29 @@ export const NavLink = styled.a`
 
 export const NavLeft = styled.div`
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
-  width: 40%;
+  a {
+    margin-right: 16px;
+  }
+`;
+
+export const NavChild = styled.div`
+  @media (max-width: 1023px) {
+    display: none;
+  }
+  display: flex;
+  align-items: center;
 `;
 
 export const NavRight = styled.div`
+  @media (max-width: 1023px) {
+    display: none;
+  }
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
-  width: 20%;
+  a {
+    margin-left: 16px;
+  }
 `;
 
 export const NavBrand = styled.a`

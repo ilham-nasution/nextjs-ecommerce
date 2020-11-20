@@ -1,7 +1,10 @@
-import { render, screen } from "@testing-library/react";
+import { shallow } from "enzyme";
 import Button from "./index";
 
-test("button", () => {
-  render(<Button>HELLO</Button>);
-  expect(screen.getByText("HELLO")).toBeInTheDocument();
+describe("Button", () => {
+  it("should render children", () => {
+    const wrapper = shallow(<Button>Click me!</Button>);
+
+    expect(wrapper.text()).toBe("Click me!");
+  });
 });
