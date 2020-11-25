@@ -1,8 +1,18 @@
+import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import FormInput from "../FormInput";
 import { SearchBar, MenuContainer, MenuLink } from "./SideMenuStyle";
 
 const index = () => {
+  const router = useRouter();
+  const [query, setQuery] = useState("");
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    router.push(`/store/product?search=${query}`);
+  };
+
   return (
     <MenuContainer
       initial={{ opacity: 0, x: 500 }}
@@ -11,7 +21,12 @@ const index = () => {
     >
       <MenuLink>
         <SearchBar>
-          <FormInput />
+          <form onSubmit={handleSearch}>
+            <FormInput
+              icon="/search-icon.png"
+              onChange={(e) => setQuery(e.target.value)}
+            />
+          </form>
         </SearchBar>
         <Link href="/store/new">
           <a>New</a>
@@ -25,7 +40,7 @@ const index = () => {
         <Link href="/">
           <a>Shoe care</a>
         </Link>
-        <Link href="/">
+        <Link href="/sign-in">
           <a>My account</a>
         </Link>
         <Link href="/cart">

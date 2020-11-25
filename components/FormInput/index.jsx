@@ -1,8 +1,9 @@
 import { FormInput } from "./FormInputStyle";
 
-const index = ({ label, r, error, ...restProps }) => {
+const index = ({ label, r, error, icon, ...restProps }) => {
   return (
-    <FormInput>
+    <FormInput icon={icon}>
+      {icon && <img src={icon} alt="icon" />}
       <label>{label}</label>
       <input ref={r} {...restProps} />
       <p>{error}</p>

@@ -10,14 +10,16 @@ export const Container = styled.div`
 
 export const Row = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `;
 
 export const Left = styled.div`
-  flex-basis: 25%;
+  flex-grow: 1;
+  margin-bottom: 16px;
 `;
 
 export const Right = styled.div`
-  flex-basis: 75%;
+  flex-grow: 3;
 `;
 
 export const FormContainer = styled.div`

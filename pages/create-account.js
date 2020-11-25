@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Head from "next/head";
 import { useForm } from "react-hook-form";
 import Button from "../components/Button";
 import FormInput from "../components/FormInput";
@@ -39,6 +40,10 @@ const createAccount = () => {
 
   return (
     <Container>
+      <Head>
+        <title>Create Account | Shoe Store</title>
+        <link rel="icon" href="/shoe.ico" />
+      </Head>
       <Row>
         <Left>
           <h3>My account</h3>
