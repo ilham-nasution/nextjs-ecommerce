@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding: 120px 72px 24px 72px;
+  padding: 80px 80px 24px 80px;
 `;
 
 export const Header = styled.div`
@@ -11,7 +11,7 @@ export const Header = styled.div`
   margin-bottom: 24px;
 
   h1 {
-    max-width: 880px;
+    max-width: 60vw;
     font-weight: normal;
   }
 
@@ -22,13 +22,23 @@ export const Header = styled.div`
     border-radius: 8rem;
     padding: 8px 24px;
   }
+
+  @media (max-width: 1023px) {
+    h1 {
+      font-size: 20px;
+    }
+  }
 `;
 
 export const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  grid-template-columns: 1fr 1fr;
   column-gap: 24px;
   row-gap: 24px;
+
+  @media (max-width: 1023px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const NoProductAlert = styled.div`

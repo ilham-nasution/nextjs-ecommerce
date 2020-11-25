@@ -8,7 +8,7 @@ export const Container = styled(motion.div)`
   background-color: white;
   z-index: 5;
   display: flex;
-  padding: 40px;
+  padding: 32px;
   border-radius: 4px;
 `;
 
@@ -37,7 +37,7 @@ export const ColorBtn = styled.button`
   height: 32px;
   width: 32px;
   border-radius: 50%;
-  box-shadow: 1px 1px 1px -1px #3a3a3a;
+  box-shadow: 0 0 16px -10px #3a3a3a;
   outline: none;
 `;
 
@@ -47,6 +47,6 @@ export const SizeBtn = styled.button`
   height: 32px;
   width: 32px;
   border-radius: 50%;
-  box-shadow: 1px 1px 1px -1px #3a3a3a;
+  box-shadow: 0 0 16px -10px #3a3a3a;
   outline: none;
 `;
