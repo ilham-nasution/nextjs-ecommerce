@@ -7,12 +7,20 @@ import { CartContext } from "../../../contexts/CartContext";
 
 const Container = styled.div`
   display: flex;
-  width: 100vw;
+  flex-wrap: wrap;
+`;
+
+const StyledSwiper = styled(Swiper)`
   height: 100vh;
+  width: 60%;
+  @media (max-width: 1023px) {
+    width: 100%;
+  }
 `;
 
 const ProductDetail = styled.div`
   padding: 88px;
+  width: 40%;
 
   p {
     line-height: 24px;
@@ -22,6 +30,10 @@ const ProductDetail = styled.div`
     label {
       font-size: small;
     }
+  }
+
+  @media (max-width: 1023px) {
+    width: 100%;
   }
 `;
 
@@ -75,7 +87,7 @@ export default function Product({ product }) {
         <link rel="icon" href="/shoe.ico" />
       </Head>
       <Container>
-        <Swiper slidesPerView={1} navigation>
+        <StyledSwiper slidesPerView={1} navigation>
           {product.image.map((img) => (
             <SwiperSlide key={img.id}>
               <img
@@ -85,7 +97,7 @@ export default function Product({ product }) {
               />
             </SwiperSlide>
           ))}
-        </Swiper>
+        </StyledSwiper>
         <ProductDetail>
           <h1>{product.name}</h1>
           <p>Rp {product.price}</p>
