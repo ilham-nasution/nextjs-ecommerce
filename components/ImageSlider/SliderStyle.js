@@ -8,6 +8,7 @@ export const Card = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 4px;
   }
 
   p {
@@ -18,6 +19,14 @@ export const Card = styled.div`
   p:first-of-type {
     font-weight: bold;
     margin: 8px 0px;
+  }
+
+  @media (max-width: 1023px) {
+    height: 100px;
+
+    p {
+      font-size: 10px;
+    }
   }
 `;
 

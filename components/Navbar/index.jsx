@@ -17,7 +17,7 @@ import {
 } from "./NavbarStyle";
 import { CartContext } from "../../contexts/CartContext";
 import BurgerMenu from "../BurgerMenu";
-import MenuModal from "../MenuModal";
+import SideMenu from "../SideMenu";
 
 const Header = ({
   setSearchForm,
@@ -109,7 +109,7 @@ const Header = ({
         </NavRight>
         <BurgerMenu sideMenu={sideMenu} setSideMenu={setSideMenu} />
       </Navbar>
-      <AnimatePresence>{sideMenu && <MenuModal />}</AnimatePresence>
+      <AnimatePresence>{sideMenu && <SideMenu />}</AnimatePresence>
     </>
   );
 };

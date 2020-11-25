@@ -11,7 +11,7 @@ export default function Home() {
         <link rel="icon" href="/shoe.ico" />
       </Head>
       <img
-        style={{ width: "100%", maxHeight: "100vh", objectFit: "cover" }}
+        style={{ width: "100%", height: "100vh", objectFit: "cover" }}
         src="/background.jpg"
       />
       <ImageSlider />
