@@ -1,6 +1,7 @@
 import { CartContext } from "../contexts/CartContext";
 import { useContext } from "react";
 import Link from "next/link";
+import Head from "next/head";
 import Button from "../components/Button";
 import CartItem from "../components/CartItem";
 import useSubtotal from "../hooks/useSubtotal";
@@ -26,6 +27,10 @@ const cart = () => {
 
   return (
     <div>
+      <Head>
+        <title>Cart | Shoe Store</title>
+        <link rel="icon" href="/shoe.ico" />
+      </Head>
       <Container>
         <h3>Your bag</h3>
         {cartItems.length > 0 ? (

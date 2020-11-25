@@ -6,14 +6,21 @@ export const Container = styled.div`
 
 export const Row = styled.div`
   display: flex;
+  flex-basis: 15%;
+  flex-wrap: wrap;
   justify-content: space-between;
+
   a {
     height: 40px;
   }
 `;
 
 export const CartTable = styled.div`
-  width: 80%;
+  flex-basis: 85%;
+
+  @media (max-width: 1023px) {
+    flex-basis: 100%;
+  }
 `;
 
 export const TableHead = styled.div`
@@ -21,6 +28,16 @@ export const TableHead = styled.div`
   border-bottom: 2px solid black;
   p {
     width: 250px;
+  }
+
+  @media (max-width: 1023px) {
+    p {
+      display: none;
+    }
+
+    p:first-of-type {
+      display: block;
+    }
   }
 `;
 

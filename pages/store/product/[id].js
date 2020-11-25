@@ -1,61 +1,15 @@
 import Head from "next/head";
-import styled from "styled-components";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation } from "swiper";
 import { useContext, useState } from "react";
 import { CartContext } from "../../../contexts/CartContext";
-
-const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const StyledSwiper = styled(Swiper)`
-  height: 100vh;
-  width: 60%;
-  @media (max-width: 1023px) {
-    width: 100%;
-  }
-`;
-
-const ProductDetail = styled.div`
-  padding: 88px;
-  width: 40%;
-
-  p {
-    line-height: 24px;
-  }
-  form {
-    margin-top: 56px;
-    label {
-      font-size: small;
-    }
-  }
-
-  @media (max-width: 1023px) {
-    width: 100%;
-  }
-`;
-
-const Select = styled.select`
-  display: block;
-  width: 100%;
-  padding: 10px 8px;
-  margin: 8px 0;
-  outline: none;
-  border: 1px solid rgb(221, 221, 221);
-`;
-
-const Button = styled.button`
-  background-color: black;
-  padding: 16px 40px;
-  border-radius: 4px;
-  color: whitesmoke;
-  border: none;
-  outline: none;
-  font-size: small;
-  width: 100%;
-`;
+import {
+  Container,
+  StyledSwiper,
+  ProductDetail,
+  Select,
+  Button,
+} from "../../../styles/ProductDetailLayout";
 
 SwiperCore.use(Navigation);
 

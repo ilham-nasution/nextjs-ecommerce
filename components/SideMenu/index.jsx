@@ -28,7 +28,7 @@ const index = () => {
         <Link href="/">
           <a>My account</a>
         </Link>
-        <Link href="/">
+        <Link href="/cart">
           <a>My Cart</a>
         </Link>
       </MenuLink>
