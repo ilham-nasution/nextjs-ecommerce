@@ -9,13 +9,15 @@ import FormInput from "../FormInput";
 import Button from "../Button";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 const SignInForm = ({ setSignInForm }) => {
   const [showForm, setShowForm] = useState(false);
   const { register, handleSubmit, errors } = useForm();
+  const router = useRouter();
 
   const onSubmit = (data, e) => {
-    console.log(data);
     axios
       .post("http://localhost:1337/auth/local", {
         identifier: data.email,
@@ -24,6 +26,10 @@ const SignInForm = ({ setSignInForm }) => {
       .then((res) => {
         console.log(res);
         setSignInForm(false);
+        Cookies.set("jwt", res.data.jwt);
+      })
+      .then(() => {
+        router.push(`/`);
       })
       .catch((err) => {
         e.target.reset();

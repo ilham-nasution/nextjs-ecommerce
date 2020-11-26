@@ -37,7 +37,7 @@ export const ColorBtn = styled.button`
   height: 32px;
   width: 32px;
   border-radius: 50%;
-  box-shadow: 0 0 16px -10px #3a3a3a;
+  box-shadow: 1px 1px 8px -6px black;
   outline: none;
 `;
 
@@ -47,6 +47,6 @@ export const SizeBtn = styled.button`
   height: 32px;
   width: 32px;
   border-radius: 50%;
-  box-shadow: 0 0 16px -10px #3a3a3a;
+  box-shadow: 1px 1px 8px -6px black;
   outline: none;
 `;

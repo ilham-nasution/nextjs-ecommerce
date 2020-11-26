@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import FormInput from "../FormInput";
 import { SearchBar, MenuContainer, MenuLink } from "./SideMenuStyle";
 
-const index = () => {
+const index = ({ setSideMenu }) => {
   const router = useRouter();
   const [query, setQuery] = useState("");
 
@@ -29,22 +29,22 @@ const index = () => {
           </form>
         </SearchBar>
         <Link href="/store/new">
-          <a>New</a>
+          <a onClick={() => setSideMenu(false)}>New</a>
         </Link>
         <Link href="/store/product">
-          <a>Collection</a>
+          <a onClick={() => setSideMenu(false)}>Collection</a>
         </Link>
         <Link href="/">
-          <a>Archive</a>
+          <a onClick={() => setSideMenu(false)}>Archive</a>
         </Link>
         <Link href="/">
-          <a>Shoe care</a>
+          <a onClick={() => setSideMenu(false)}>Shoe care</a>
         </Link>
         <Link href="/sign-in">
-          <a>My account</a>
+          <a onClick={() => setSideMenu(false)}>My account</a>
         </Link>
         <Link href="/cart">
-          <a>My Cart</a>
+          <a onClick={() => setSideMenu(false)}>My Cart</a>
         </Link>
       </MenuLink>
     </MenuContainer>

@@ -45,7 +45,7 @@ export const NavRight = styled.div`
   }
 `;
 
-export const NavBrand = styled.a`
+export const NavBrand = styled.div`
   font-size: 40px;
   font-weight: bold;
   letter-spacing: 3px;

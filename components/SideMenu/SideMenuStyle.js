@@ -9,7 +9,7 @@ export const MenuContainer = styled(motion.div)`
   padding: 96px 32px 16px 32px;
   border-radius: 4px;
   z-index: 2;
-  box-shadow: 0 0 16px -4px black;
+  box-shadow: 0 0 8px -4px black;
 `;
 
 export const MenuLink = styled.div`

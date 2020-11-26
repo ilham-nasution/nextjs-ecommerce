@@ -8,6 +8,6 @@ export const Card = styled.a`
     height: 80%;
     object-fit: cover;
     border-radius: 4px;
-    box-shadow: 0 0 16px -10px black;
+    box-shadow: 1px 1px 8px -4px black;
   }
 `;

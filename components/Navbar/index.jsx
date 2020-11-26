@@ -18,6 +18,8 @@ import {
 import { CartContext } from "../../contexts/CartContext";
 import BurgerMenu from "../BurgerMenu";
 import SideMenu from "../SideMenu";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 const Header = ({
   setSearchForm,
@@ -28,6 +30,8 @@ const Header = ({
 }) => {
   const { cartItems, setCartItems } = useContext(CartContext);
   const [sideMenu, setSideMenu] = useState(false);
+  const jwt = Cookies.get("jwt");
+  const router = useRouter();
 
   useEffect(() => {
     const items = localStorage.getItem("cart");
@@ -41,6 +45,11 @@ const Header = ({
     ["", "", "white"]
   );
   const opacity = useTransform(scrollYProgress, [0, 0.4, 0.5], [1, 0, 1]);
+
+  const handleSignOut = () => {
+    Cookies.remove("jwt");
+    router.push(`/`);
+  };
 
   return (
     <>
@@ -85,16 +94,20 @@ const Header = ({
           >
             Search
           </NavLink>
-          <NavLink
-            active={signInForm}
-            unactive={openCart}
-            onClick={() => {
-              setSignInForm(true);
-              setOpenCart(false);
-            }}
-          >
-            My account
-          </NavLink>
+          {jwt ? (
+            <NavLink onClick={handleSignOut}>Sign Out</NavLink>
+          ) : (
+            <NavLink
+              active={signInForm}
+              unactive={openCart}
+              onClick={() => {
+                setSignInForm(true);
+                setOpenCart(false);
+              }}
+            >
+              My account
+            </NavLink>
+          )}
           <NavCart
             cartItems={cartItems}
             setCartItems={setCartItems}
@@ -109,7 +122,9 @@ const Header = ({
         </NavRight>
         <BurgerMenu sideMenu={sideMenu} setSideMenu={setSideMenu} />
       </Navbar>
-      <AnimatePresence>{sideMenu && <SideMenu />}</AnimatePresence>
+      <AnimatePresence>
+        {sideMenu && <SideMenu setSideMenu={setSideMenu} />}
+      </AnimatePresence>
     </>
   );
 };

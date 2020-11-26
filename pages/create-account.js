@@ -14,6 +14,7 @@ import {
 } from "../styles/SignUpPageLayout";
 import axios from "axios";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
 const createAccount = () => {
   const router = useRouter();
@@ -30,6 +31,9 @@ const createAccount = () => {
       })
       .then((res) => {
         console.log(res);
+        Cookies.set("jwt", res.data.jwt);
+      })
+      .then(() => {
         router.push(`/`);
       })
       .catch((err) => {

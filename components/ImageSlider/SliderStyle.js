@@ -9,6 +9,7 @@ export const Card = styled.div`
     height: 100%;
     object-fit: cover;
     border-radius: 4px;
+    box-shadow: 1px 1px 8px -4px black;
   }
 
   p {
