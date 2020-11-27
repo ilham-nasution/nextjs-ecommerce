@@ -1,14 +1,15 @@
 import axios from "axios";
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import Cookies from "js-cookie";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  const user = Cookies.get("user");
 
-  useEffect(() => {
-    const userId = JSON.parse(Cookies.get("user")).id;
+  if (user) {
+    const userId = JSON.parse(user).id;
     axios
       .get(
         `http://localhost:1337/user-bags?_where[users_permissions_user]=${userId}`,
@@ -23,9 +24,7 @@ export const CartProvider = ({ children }) => {
         setCartItems(res.data);
       })
       .catch((err) => console.error(err));
-  }, []);
-
-  console.log(cartItems);
+  }
 
   return (
     <CartContext.Provider value={{ cartItems, setCartItems }}>

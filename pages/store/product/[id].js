@@ -30,30 +30,35 @@ export default function Product({ product }) {
     });
   };
 
+  const user = Cookies.get("user");
+
   const handleAddItem = (e) => {
     e.preventDefault();
-    const userItems = {
-      product: product.id,
-      users_permissions_user: JSON.parse(Cookies.get("user")).id,
-      color: product.colors.find((color) => color.name == values.color).id,
-      size: product.sizes.find((size) => size.name == values.size).id,
-    };
-    axios
-      .post("http://localhost:1337/user-bags", userItems, {
-        headers: {
-          Authorization: `Bearer ${Cookies.get("jwt")}`,
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        setCartItems((prevItem) => {
-          return [...prevItem, res.data];
+    if (user) {
+      const userItems = {
+        product: product.id,
+        users_permissions_user: JSON.parse(user).id,
+        color: product.colors.find((color) => color.name == values.color).id,
+        size: product.sizes.find((size) => size.name == values.size).id,
+      };
+      axios
+        .post("http://localhost:1337/user-bags", userItems, {
+          headers: {
+            Authorization: `Bearer ${Cookies.get("jwt")}`,
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          setCartItems((prevItem) => {
+            return [...prevItem, res.data];
+          });
+        })
+        .catch((err) => {
+          console.error(err);
         });
-      })
-      .catch((err) => {
-        console.error(err);
-        router.push("/sign-in");
-      });
+    } else {
+      router.push("/sign-in");
+    }
   };
 
   return (
