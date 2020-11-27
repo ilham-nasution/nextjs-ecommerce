@@ -32,6 +32,7 @@ const createAccount = () => {
       .then((res) => {
         console.log(res);
         Cookies.set("jwt", res.data.jwt);
+        Cookies.set("user", res.data.user);
       })
       .then(() => {
         router.push(`/`);

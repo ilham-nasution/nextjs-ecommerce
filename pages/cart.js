@@ -12,6 +12,8 @@ import {
   TableHead,
   Total,
 } from "../styles/CartPageLayout";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 const cart = () => {
   const { cartItems, setCartItems } = useContext(CartContext);
@@ -19,6 +21,14 @@ const cart = () => {
   const subtotal = useSubtotal(cartItems);
 
   const handleDelete = (id) => {
+    axios
+      .delete(`http://localhost:1337/user-bags/${id}`, {
+        headers: {
+          Authorization: `Bearer ${Cookies.get("jwt")}`,
+        },
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err));
     const updatedItems = cartItems.filter((item) => {
       return item.id !== id;
     });

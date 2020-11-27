@@ -10,6 +10,9 @@ import {
   Select,
   Button,
 } from "../../../styles/ProductDetailLayout";
+import axios from "axios";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 SwiperCore.use(Navigation);
 
@@ -19,6 +22,7 @@ export default function Product({ product }) {
     size: product.sizes[0].name,
   });
   const { setCartItems } = useContext(CartContext);
+  const router = useRouter();
 
   const handleChange = (e) => {
     setValues((prevValues) => {
@@ -28,10 +32,28 @@ export default function Product({ product }) {
 
   const handleAddItem = (e) => {
     e.preventDefault();
-    const item = { ...product, color: values.color, size: values.size };
-    setCartItems((prevItem) => {
-      return [...prevItem, item];
-    });
+    const userItems = {
+      product: product.id,
+      users_permissions_user: JSON.parse(Cookies.get("user")).id,
+      color: product.colors.find((color) => color.name == values.color).id,
+      size: product.sizes.find((size) => size.name == values.size).id,
+    };
+    axios
+      .post("http://localhost:1337/user-bags", userItems, {
+        headers: {
+          Authorization: `Bearer ${Cookies.get("jwt")}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        setCartItems((prevItem) => {
+          return [...prevItem, res.data];
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+        router.push("/sign-in");
+      });
   };
 
   return (

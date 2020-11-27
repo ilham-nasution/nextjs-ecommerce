@@ -48,6 +48,7 @@ const Header = ({
 
   const handleSignOut = () => {
     Cookies.remove("jwt");
+    Cookies.remove("user");
     router.push(`/`);
   };
 

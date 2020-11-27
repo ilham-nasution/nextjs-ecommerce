@@ -18,18 +18,18 @@ const Cart = ({ setOpenCart }) => {
     <CartItem key={index}>
       <section>
         <img
-          src={`http://localhost:1337${item.image[0].formats.thumbnail.url}`}
+          src={`http://localhost:1337${item.product.image[0].formats.thumbnail.url}`}
           alt="product"
           width="56px"
           height="56px"
         />
         <div>
-          <p>{item.name}</p>
-          <p>{item.color}</p>
-          <p>{item.size}</p>
+          <p>{item.product.name}</p>
+          <p>{item.color.name}</p>
+          <p>{item.size.name}</p>
         </div>
       </section>
-      <p>Rp {item.price}</p>
+      <p>Rp {item.product.price}</p>
     </CartItem>
   ));
 
