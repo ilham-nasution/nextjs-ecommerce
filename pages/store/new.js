@@ -5,6 +5,7 @@ import ProductCard from "../../components/ProductCard";
 import { useState } from "react";
 import FilterModal from "../../components/FilterModal";
 import { AnimatePresence } from "framer-motion";
+import { API_URL } from "../../utils/urls";
 
 export default function New({ products, colors, sizes }) {
   const [openFilter, setOpenFilter] = useState(false);
@@ -52,9 +53,9 @@ export default function New({ products, colors, sizes }) {
 }
 
 export async function getStaticProps() {
-  const productRes = await fetch("http://localhost:1337/products");
-  const colorRes = await fetch("http://localhost:1337/colors");
-  const sizesRes = await fetch("http://localhost:1337/sizes");
+  const productRes = await fetch(`${API_URL}/products`);
+  const colorRes = await fetch(`${API_URL}/colors`);
+  const sizesRes = await fetch(`${API_URL}/sizes`);
   const sizes = await sizesRes.json();
   const colors = await colorRes.json();
   const products = await productRes.json();

@@ -5,7 +5,7 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import Link from "next/link";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import {
   Navbar,
   NavLink,
@@ -19,7 +19,6 @@ import { CartContext } from "../../contexts/CartContext";
 import BurgerMenu from "../BurgerMenu";
 import SideMenu from "../SideMenu";
 import Cookies from "js-cookie";
-import { useRouter } from "next/router";
 
 const Header = ({
   setSearchForm,
@@ -31,12 +30,6 @@ const Header = ({
   const { cartItems, setCartItems } = useContext(CartContext);
   const [sideMenu, setSideMenu] = useState(false);
   const jwt = Cookies.get("jwt");
-  const router = useRouter();
-
-  useEffect(() => {
-    const items = localStorage.getItem("cart");
-    setCartItems(JSON.parse(items));
-  }, []);
 
   const { scrollYProgress } = useViewportScroll();
   const backgroundColor = useTransform(
@@ -49,7 +42,7 @@ const Header = ({
   const handleSignOut = () => {
     Cookies.remove("jwt");
     Cookies.remove("user");
-    router.push(`/`);
+    setCartItems([]);
   };
 
   return (

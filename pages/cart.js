@@ -4,7 +4,7 @@ import Link from "next/link";
 import Head from "next/head";
 import Button from "../components/Button";
 import CartItem from "../components/CartItem";
-import useSubtotal from "../hooks/useSubtotal";
+import subtotal from "../utils/subtotal";
 import {
   Container,
   Row,
@@ -14,15 +14,14 @@ import {
 } from "../styles/CartPageLayout";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { API_URL } from "../utils/urls";
 
 const cart = () => {
   const { cartItems, setCartItems } = useContext(CartContext);
 
-  const subtotal = useSubtotal(cartItems);
-
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:1337/user-bags/${id}`, {
+      .delete(`${API_URL}/orders/${id}`, {
         headers: {
           Authorization: `Bearer ${Cookies.get("jwt")}`,
         },
@@ -72,7 +71,7 @@ const cart = () => {
               </p>
               <div>
                 <h4>Total</h4>
-                <h4>Rp {subtotal}</h4>
+                <h4>Rp {subtotal(cartItems)}</h4>
               </div>
               <Button>Checkout</Button>
             </Total>

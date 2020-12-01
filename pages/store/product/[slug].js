@@ -13,6 +13,7 @@ import {
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import { API_URL } from "../../../utils/urls";
 
 SwiperCore.use(Navigation);
 
@@ -37,12 +38,12 @@ export default function Product({ product }) {
     if (user) {
       const userItems = {
         product: product.id,
-        users_permissions_user: JSON.parse(user).id,
+        user: JSON.parse(user).id,
         color: product.colors.find((color) => color.name == values.color).id,
         size: product.sizes.find((size) => size.name == values.size).id,
       };
       axios
-        .post("http://localhost:1337/user-bags", userItems, {
+        .post(`${API_URL}/orders`, userItems, {
           headers: {
             Authorization: `Bearer ${Cookies.get("jwt")}`,
           },
@@ -72,7 +73,7 @@ export default function Product({ product }) {
           {product.image.map((img) => (
             <SwiperSlide key={img.id}>
               <img
-                src={`http://localhost:1337${img.formats.large.url}`}
+                src={`${API_URL}${img.formats.large.url}`}
                 alt={product.name}
                 style={{ objectFit: "cover", width: "100%", height: "100%" }}
               />
@@ -113,18 +114,18 @@ export default function Product({ product }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch("http://localhost:1337/products");
+  const res = await fetch(`${API_URL}/products`);
   const products = await res.json();
   const paths = products.map((product) => ({
-    params: { id: product.id.toString() },
+    params: { slug: String(product.slug) },
   }));
 
   return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params }) {
-  const res = await fetch(`http://localhost:1337/products/${params.id}`);
+export async function getStaticProps({ params: { slug } }) {
+  const res = await fetch(`${API_URL}/products/?slug=${slug}`);
   const product = await res.json();
 
-  return { props: { product } };
+  return { props: { product: product[0] } };
 }

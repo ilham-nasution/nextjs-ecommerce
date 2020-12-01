@@ -1,6 +1,7 @@
 import axios from "axios";
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import { API_URL } from "../utils/urls";
 
 export const CartContext = createContext();
 
@@ -8,23 +9,22 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const user = Cookies.get("user");
 
-  if (user) {
-    const userId = JSON.parse(user).id;
-    axios
-      .get(
-        `http://localhost:1337/user-bags?_where[users_permissions_user]=${userId}`,
-        {
+  useEffect(() => {
+    if (user) {
+      const userId = JSON.parse(user).id;
+      axios
+        .get(`${API_URL}/orders?_where[user]=${userId}`, {
           headers: {
             Authorization: `Bearer ${Cookies.get("jwt")}`,
           },
-        }
-      )
-      .then((res) => {
-        console.log(res);
-        setCartItems(res.data);
-      })
-      .catch((err) => console.error(err));
-  }
+        })
+        .then((res) => {
+          console.log(res);
+          setCartItems(res.data);
+        })
+        .catch((err) => console.error(err));
+    }
+  }, [user]);
 
   return (
     <CartContext.Provider value={{ cartItems, setCartItems }}>

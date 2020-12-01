@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import { API_URL } from "../../utils/urls";
 
 const SignInForm = ({ setSignInForm }) => {
   const [showForm, setShowForm] = useState(false);
@@ -19,7 +20,7 @@ const SignInForm = ({ setSignInForm }) => {
 
   const onSubmit = (data, e) => {
     axios
-      .post("http://localhost:1337/auth/local", {
+      .post(`${API_URL}/auth/local`, {
         identifier: data.email,
         password: data.password,
       })

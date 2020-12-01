@@ -7,18 +7,18 @@ import {
 import Button from "../Button";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
-import useSubtotal from "../../hooks/useSubtotal";
+import subtotal from "../../utils/subtotal";
 import { CartItem, Subtotal } from "./CartModalStyle";
+import { API_URL } from "../../utils/urls";
 
 const Cart = ({ setOpenCart }) => {
   const { cartItems } = useContext(CartContext);
-  const subtotal = useSubtotal(cartItems);
 
   const renderCartList = cartItems.map((item, index) => (
     <CartItem key={index}>
       <section>
         <img
-          src={`http://localhost:1337${item.product.image[0].formats.thumbnail.url}`}
+          src={`${API_URL}${item.product.image[0].formats.thumbnail.url}`}
           alt="product"
           width="56px"
           height="56px"
@@ -49,7 +49,7 @@ const Cart = ({ setOpenCart }) => {
             {renderCartList}
             <Subtotal>
               <p>Subtotal: </p>
-              <p>Rp {subtotal}</p>
+              <p>Rp {subtotal(cartItems)}</p>
             </Subtotal>
           </>
         )}

@@ -8,6 +8,7 @@ import {
 import Footer from "../../components/Footer";
 import Link from "next/link";
 import ProductCard from "../../components/ProductCard";
+import { API_URL } from "../../utils/urls";
 
 export default function Product({ products }) {
   return (
@@ -48,7 +49,7 @@ export default function Product({ products }) {
 export async function getServerSideProps({ query }) {
   if (query.search) {
     const res = await fetch(
-      `http://localhost:1337/products?name_contains=${query.search}`
+      `${API_URL}/products?name_contains=${query.search}`
     );
     const products = await res.json();
     return {
@@ -57,7 +58,7 @@ export async function getServerSideProps({ query }) {
       },
     };
   } else {
-    const res = await fetch(`http://localhost:1337/products`);
+    const res = await fetch(`${API_URL}/products`);
     const products = await res.json();
     return {
       props: {

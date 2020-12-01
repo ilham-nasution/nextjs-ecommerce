@@ -15,6 +15,7 @@ import {
 import axios from "axios";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import { API_URL } from "../utils/urls";
 
 const createAccount = () => {
   const router = useRouter();
@@ -23,7 +24,7 @@ const createAccount = () => {
 
   const onSubmit = (data, e) => {
     axios
-      .post("http://localhost:1337/auth/local/register", {
+      .post(`${API_URL}/auth/local/register`, {
         username: `${data.firstName} ${data.lastName}`,
         password: data.password,
         email: data.email,
