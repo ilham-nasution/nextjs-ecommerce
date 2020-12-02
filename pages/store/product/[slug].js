@@ -73,7 +73,7 @@ export default function Product({ product }) {
           {product.image.map((img) => (
             <SwiperSlide key={img.id}>
               <img
-                src={`${API_URL}${img.formats.large.url}`}
+                src={img.formats.large.url}
                 alt={product.name}
                 style={{ objectFit: "cover", width: "100%", height: "100%" }}
               />

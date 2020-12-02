@@ -1,12 +1,11 @@
 import { CartItem, DeleteBtn, Product, ProductDetail } from "./CartItemStyle";
-import { API_URL } from "../../utils/urls";
 
 const Index = ({ item, handleDelete }) => {
   return (
     <CartItem>
       <Product>
         <img
-          src={`${API_URL}${item.product.image[0].formats.thumbnail.url}`}
+          src={item.product.image[0].formats.thumbnail.url}
           alt={item.name}
           width="80px"
           height="80px"
