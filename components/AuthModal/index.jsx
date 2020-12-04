@@ -28,7 +28,6 @@ const SignInForm = ({ setSignInForm }) => {
         console.log(res);
         setSignInForm(false);
         Cookies.set("jwt", res.data.jwt);
-        Cookies.set("user", res.data.user);
       })
       .then(() => {
         router.push(`/`);

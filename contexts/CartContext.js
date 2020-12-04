@@ -2,16 +2,17 @@ import axios from "axios";
 import { createContext, useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { API_URL } from "../utils/urls";
+import jwtDecode from "jwt-decode";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
-  const user = Cookies.get("user");
+  const jwt = Cookies.get("jwt");
 
   useEffect(() => {
-    if (user) {
-      const userId = JSON.parse(user).id;
+    if (jwt) {
+      const userId = jwtDecode(jwt).id;
       axios
         .get(`${API_URL}/orders?_where[user]=${userId}`, {
           headers: {
@@ -24,7 +25,7 @@ export const CartProvider = ({ children }) => {
         })
         .catch((err) => console.error(err));
     }
-  }, [user]);
+  }, [jwt]);
 
   return (
     <CartContext.Provider value={{ cartItems, setCartItems }}>

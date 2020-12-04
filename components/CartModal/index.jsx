@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
 import subtotal from "../../utils/subtotal";
 import { CartItem, Subtotal } from "./CartModalStyle";
+import { getImageUrl } from "../../utils/urls";
 
 const Cart = ({ setOpenCart }) => {
   const { cartItems } = useContext(CartContext);
@@ -17,7 +18,7 @@ const Cart = ({ setOpenCart }) => {
     <CartItem key={index}>
       <section>
         <img
-          src={item.product.image[0].formats.thumbnail.url}
+          src={getImageUrl(item.product.image[0].formats.thumbnail.url)}
           alt="product"
           width="56px"
           height="56px"

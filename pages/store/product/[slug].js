@@ -13,7 +13,8 @@ import {
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
-import { API_URL } from "../../../utils/urls";
+import { API_URL, getImageUrl } from "../../../utils/urls";
+import jwtDecode from "jwt-decode";
 
 SwiperCore.use(Navigation);
 
@@ -31,14 +32,13 @@ export default function Product({ product }) {
     });
   };
 
-  const user = Cookies.get("user");
-
   const handleAddItem = (e) => {
     e.preventDefault();
-    if (user) {
+    const jwt = Cookies.get("jwt");
+    if (jwt) {
       const userItems = {
         product: product.id,
-        user: JSON.parse(user).id,
+        user: jwtDecode(jwt).id,
         color: product.colors.find((color) => color.name == values.color).id,
         size: product.sizes.find((size) => size.name == values.size).id,
       };
@@ -73,7 +73,7 @@ export default function Product({ product }) {
           {product.image.map((img) => (
             <SwiperSlide key={img.id}>
               <img
-                src={img.formats.large.url}
+                src={getImageUrl(img.formats.large.url)}
                 alt={product.name}
                 style={{ objectFit: "cover", width: "100%", height: "100%" }}
               />

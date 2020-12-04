@@ -1,3 +1,4 @@
+import { getImageUrl } from "../../utils/urls";
 import { CartItem, DeleteBtn, Product, ProductDetail } from "./CartItemStyle";
 
 const Index = ({ item, handleDelete }) => {
@@ -5,7 +6,7 @@ const Index = ({ item, handleDelete }) => {
     <CartItem>
       <Product>
         <img
-          src={item.product.image[0].formats.thumbnail.url}
+          src={getImageUrl(item.product.image[0].formats.thumbnail.url)}
           alt={item.name}
           width="80px"
           height="80px"
