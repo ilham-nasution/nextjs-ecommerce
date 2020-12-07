@@ -5,8 +5,6 @@ export const Card = styled.div`
   height: 300px;
 
   img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
     border-radius: 4px;
     box-shadow: 1px 1px 8px -4px black;
@@ -33,4 +31,9 @@ export const Card = styled.div`
 
 export const Container = styled(Swiper)`
   padding: 80px 40px;
+`;
+
+export const CardImage = styled.div`
+  position: relative;
+  height: 80%;
 `;

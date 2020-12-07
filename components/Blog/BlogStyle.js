@@ -6,12 +6,9 @@ export const Container = styled.div`
 `;
 
 export const Card = styled.div`
-  height: 500px;
   padding: 16px;
 
   img {
-    height: 100%;
-    width: 100%;
     object-fit: cover;
     border-radius: 4px;
     box-shadow: 1px 1px 8px -4px black;
@@ -25,4 +22,10 @@ export const Card = styled.div`
     font-weight: bold;
     margin: 8px 0px;
   }
+`;
+
+export const CardImage = styled.div`
+  position: relative;
+  height: 500px;
+  width: 100%;
 `;

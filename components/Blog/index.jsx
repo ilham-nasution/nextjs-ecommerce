@@ -1,4 +1,5 @@
-import { Container, Card } from "./BlogStyle";
+import { Container, Card, CardImage } from "./BlogStyle";
+import Image from "next/image";
 
 const blogList = [
   {
@@ -18,7 +19,9 @@ const Blog = () => {
     <Container>
       {blogList.map((blog) => (
         <Card key={blog.image}>
-          <img src={blog.image} alt="blog" />
+          <CardImage>
+            <Image src={blog.image} layout="fill" alt="blog" />
+          </CardImage>
           <p>{blog.title}</p>
           <p>{blog.caption}</p>
         </Card>

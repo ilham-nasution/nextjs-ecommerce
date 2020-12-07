@@ -1,5 +1,6 @@
 import { SwiperSlide } from "swiper/react";
-import { Card, Container } from "./SliderStyle";
+import { Card, Container, CardImage } from "./SliderStyle";
+import Image from "next/image";
 
 const imgSlider = [
   {
@@ -40,7 +41,9 @@ const Slider = () => {
       {imgSlider.map((item) => (
         <SwiperSlide key={item.image}>
           <Card>
-            <img src={item.image} alt="slider" />
+            <CardImage>
+              <Image src={item.image} alt="slider" layout="fill" />
+            </CardImage>
             <p>{item.title}</p>
             <p>{item.caption}</p>
           </Card>

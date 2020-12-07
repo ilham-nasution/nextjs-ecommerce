@@ -11,6 +11,7 @@ export default function Home() {
         <link rel="icon" href="/shoe.ico" />
       </Head>
       <img
+        alt="Shoe Background"
         style={{ width: "100%", height: "100vh", objectFit: "cover" }}
         src="/background.jpg"
       />
