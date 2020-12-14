@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import { SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation } from "swiper";
 import { useContext, useState } from "react";
@@ -72,10 +73,11 @@ export default function Product({ product }) {
         <StyledSwiper slidesPerView={1} navigation>
           {product.image.map((img) => (
             <SwiperSlide key={img.id}>
-              <img
+              <Image
                 src={getImageUrl(img.formats.large.url)}
                 alt={product.name}
-                style={{ objectFit: "cover", width: "100%", height: "100%" }}
+                layout="fill"
+                objectFit="cover"
               />
             </SwiperSlide>
           ))}

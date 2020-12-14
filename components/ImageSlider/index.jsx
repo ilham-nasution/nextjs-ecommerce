@@ -42,7 +42,7 @@ const Slider = () => {
         <SwiperSlide key={item.image}>
           <Card>
             <CardImage>
-              <Image src={item.image} alt="slider" layout="fill" />
+              <Image src={item.image} alt={item.title} layout="fill" />
             </CardImage>
             <p>{item.title}</p>
             <p>{item.caption}</p>

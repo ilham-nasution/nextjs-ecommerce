@@ -8,10 +8,6 @@ export const CartItem = styled.div`
   border-bottom: 1px solid rgb(221, 221, 221);
   padding-bottom: 8px;
 
-  img {
-    margin-right: 4px;
-  }
-
   p {
     font-size: smaller;
     width: 250px;
@@ -27,15 +23,10 @@ export const CartItem = styled.div`
 `;
 
 export const Product = styled.div`
-  display: flex;
-  align-items: center;
-  width: 250px;
   font-size: smaller;
 
   @media (max-width: 1023px) {
-    p {
-      display: block;
-    }
+    display: flex;
   }
 `;
 
@@ -52,6 +43,7 @@ export const ProductDetail = styled.div`
   @media (max-width: 1023px) {
     p {
       display: block;
+      margin-left: 8px;
     }
   }
 `;

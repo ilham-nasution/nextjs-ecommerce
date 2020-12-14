@@ -10,6 +10,7 @@ import { CartContext } from "../../contexts/CartContext";
 import subtotal from "../../utils/subtotal";
 import { CartItem, Subtotal } from "./CartModalStyle";
 import { getImageUrl } from "../../utils/urls";
+import Image from "next/image";
 
 const Cart = ({ setOpenCart }) => {
   const { cartItems } = useContext(CartContext);
@@ -17,11 +18,11 @@ const Cart = ({ setOpenCart }) => {
   const renderCartList = cartItems.map((item, index) => (
     <CartItem key={index}>
       <section>
-        <img
+        <Image
           src={getImageUrl(item.product.image[0].formats.thumbnail.url)}
-          alt="product"
-          width="56px"
-          height="56px"
+          alt={item.name}
+          width={56}
+          height={56}
         />
         <div>
           <p>{item.product.name}</p>

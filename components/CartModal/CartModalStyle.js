@@ -7,15 +7,11 @@ export const CartItem = styled.div`
 
   section {
     display: flex;
-    img {
-      margin-right: 8px;
-    }
   }
 
   p {
     font-size: small;
-    margin: 0;
-    margin-bottom: 4px;
+    margin: 0 0 4px 8px;
   }
 `;
 

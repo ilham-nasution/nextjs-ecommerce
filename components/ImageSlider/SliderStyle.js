@@ -4,12 +4,6 @@ import { Swiper } from "swiper/react";
 export const Card = styled.div`
   height: 300px;
 
-  img {
-    object-fit: cover;
-    border-radius: 4px;
-    box-shadow: 1px 1px 8px -4px black;
-  }
-
   p {
     margin: 0;
     font-size: small;
@@ -36,4 +30,10 @@ export const Container = styled(Swiper)`
 export const CardImage = styled.div`
   position: relative;
   height: 80%;
+  box-shadow: 1px 1px 8px -4px black;
+
+  img {
+    object-fit: cover;
+    border-radius: 4px;
+  }
 `;

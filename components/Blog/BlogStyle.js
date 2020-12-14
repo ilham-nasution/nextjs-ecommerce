@@ -7,12 +7,7 @@ export const Container = styled.div`
 
 export const Card = styled.div`
   padding: 16px;
-
-  img {
-    object-fit: cover;
-    border-radius: 4px;
-    box-shadow: 1px 1px 8px -4px black;
-  }
+  width: 100%;
 
   p {
     font-size: small;
@@ -27,5 +22,10 @@ export const Card = styled.div`
 export const CardImage = styled.div`
   position: relative;
   height: 500px;
-  width: 100%;
+  box-shadow: 1px 1px 8px -4px black;
+
+  img {
+    object-fit: cover;
+    border-radius: 4px;
+  }
 `;
