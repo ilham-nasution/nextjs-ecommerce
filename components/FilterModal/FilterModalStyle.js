@@ -10,6 +10,10 @@ export const Container = styled(motion.div)`
   display: flex;
   padding: 32px;
   border-radius: 4px;
+
+  @media (max-width: 425px) {
+    display: block;
+  }
 `;
 
 export const Col = styled.div`

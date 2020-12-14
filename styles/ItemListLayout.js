@@ -23,9 +23,12 @@ export const Header = styled.div`
     padding: 8px 24px;
   }
 
-  @media (max-width: 1023px) {
+  @media (max-width: 425px) {
+    display: block;
+    text-align: center;
+
     h1 {
-      font-size: 20px;
+      font-size: smaller;
     }
   }
 `;

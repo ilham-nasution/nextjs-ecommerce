@@ -7,6 +7,7 @@ export const NavModal = styled.div`
   background-color: rgba(0, 0, 0, 0.404);
   width: 100%;
   height: 100vh;
+  z-index: 3;
 `;
 
 export const NavModalContainer = styled(motion.div)`
