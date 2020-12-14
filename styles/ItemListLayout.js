@@ -36,7 +36,7 @@ export const Grid = styled.div`
   column-gap: 24px;
   row-gap: 24px;
 
-  @media (max-width: 1023px) {
+  @media (max-width: 425px) {
     grid-template-columns: 1fr;
   }
 `;
