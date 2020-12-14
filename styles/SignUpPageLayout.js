@@ -10,7 +10,10 @@ export const Container = styled.div`
 
 export const Row = styled.div`
   display: flex;
-  flex-wrap: wrap;
+
+  @media (max-width: 425px) {
+    display: block;
+  }
 `;
 
 export const Left = styled.div`
@@ -27,6 +30,11 @@ export const FormContainer = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 32px;
   margin-bottom: 32px;
+
+  @media (max-width: 425px) {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
 `;
 
 export const GroupRadioButtons = styled.div`
